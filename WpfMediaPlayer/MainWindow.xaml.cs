@@ -22,6 +22,9 @@ namespace WpfMediaPlayer
         private int currentPlaylistIndex = 0;
         
         private DispatcherTimer timer;
+        private bool isShuffleMode = false;
+        Brush currentButtonColor;
+        private bool isDraggingSlider = false; // Đang kéo thanh tua
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +32,8 @@ namespace WpfMediaPlayer
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
+            // Lấy màu hiện tại của nút
+            currentButtonColor = ShuffleBtn.Background;
         }
 
         
@@ -89,19 +94,48 @@ namespace WpfMediaPlayer
 
         private void mediaPlayer_MediaEnded(object sender, RoutedEventArgs e)
         {
-            currentPlaylistIndex++;
-            if (currentPlaylistIndex < playlistListBox.Items.Count)
+            if (isShuffleMode)
             {
+                // Tạo danh sách các chỉ số của bài hát trong playlist
+                List<int> playlistIndices = new List<int>();
+                for (int i = 0; i < playlistListBox.Items.Count; i++)
+                {
+                    playlistIndices.Add(i);
+                }
+
+                // Loại bỏ chỉ số của bài hát vừa chạy xong khỏi danh sách
+                playlistIndices.Remove(currentPlaylistIndex);
+
+                // Chọn ngẫu nhiên một chỉ số từ danh sách còn lại
+                Random random = new Random();
+                int randomIndex = random.Next(playlistIndices.Count);
+
+                // Chuyển đến bài hát ngẫu nhiên
+                currentPlaylistIndex = playlistIndices[randomIndex];
+
                 string nextFile = playlistListBox.Items[currentPlaylistIndex].ToString();
                 mediaPlayer.Source = new Uri(nextFile);
                 mediaPlayer.Play();
+                timer.Stop();
+                progressSlider.Value = 0;
             }
             else
             {
-                currentPlaylistIndex = 0;
+                currentPlaylistIndex++;
+                if (currentPlaylistIndex < playlistListBox.Items.Count)
+                {
+                    string nextFile = playlistListBox.Items[currentPlaylistIndex].ToString();
+                    mediaPlayer.Source = new Uri(nextFile);
+                    mediaPlayer.Play();
+                }
+                else
+                {
+                    currentPlaylistIndex = 0;
+                }
+                timer.Stop();
+                progressSlider.Value = 0;
             }
-            timer.Stop();
-            progressSlider.Value = 0;
+            
         }
 
         private void RemoveSelectedButtonClick(object sender, RoutedEventArgs e)
@@ -191,10 +225,83 @@ namespace WpfMediaPlayer
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            if (mediaPlayer.Source != null)
+            if (!isDraggingSlider)
             {
-                progressSlider.Value = mediaPlayer.Position.TotalSeconds;
+                // Người dùng không tua, cập nhật giá trị thanh tua từ media player
+                if (mediaPlayer.Source != null)
+                {
+                    progressSlider.Value = mediaPlayer.Position.TotalSeconds;
+                }
             }
         }
+
+        private void PlayNextFile()
+        {
+            currentPlaylistIndex++;
+            if (currentPlaylistIndex >= playlistListBox.Items.Count)
+            {
+                currentPlaylistIndex = 0;
+            }
+            string nextFile = playlistListBox.Items[currentPlaylistIndex].ToString();
+            mediaPlayer.Source = new Uri(nextFile);
+            mediaPlayer.Play();
+            timer.Stop();
+            progressSlider.Value = 0;
+        }
+
+        private void PlayPreviousFile()
+        {
+            currentPlaylistIndex--;
+            if (currentPlaylistIndex < 0)
+            {
+                currentPlaylistIndex = playlistListBox.Items.Count - 1;
+            }
+            string previousFile = playlistListBox.Items[currentPlaylistIndex].ToString();
+            mediaPlayer.Source = new Uri(previousFile);
+            mediaPlayer.Play();
+            timer.Stop();
+            progressSlider.Value = 0;
+        }
+
+        private void PlayNextButtonClick(object sender, RoutedEventArgs e)
+        {
+            PlayNextFile();
+        }
+
+        private void PlayPreviousButtonClick(object sender, RoutedEventArgs e)
+        {
+            PlayPreviousFile();
+        }
+
+        private void ShuffleModeButtonClick(object sender, RoutedEventArgs e)
+        {
+            isShuffleMode = !isShuffleMode;
+            // thay đổi màu của button khi bật hoặc tắt shuffle mode
+            UpdateShuffleButtonColor();
+        }
+
+        private void UpdateShuffleButtonColor()
+        {
+            if (isShuffleMode)
+            {
+                ShuffleBtn.Background = Brushes.Green; 
+            }
+            else
+            {
+                ShuffleBtn.Background = currentButtonColor; 
+            }
+        }
+
+        private void progressSlider_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isDraggingSlider = true;
+        }
+
+        private void progressSlider_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            isDraggingSlider = false;
+            mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
+        }
     }
+
 }

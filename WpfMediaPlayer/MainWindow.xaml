@@ -27,17 +27,21 @@
                 <ListBox Name="playlistListBox" SelectionMode="Extended"/>
                 <Button Content="Save" Click="SavePlaylistButtonClick"/>
                 <Button Content="Load" Click="LoadPlaylistButtonClick"/>
+                <Button Name="ShuffleBtn" Content="Shuffle mode" Click="ShuffleModeButtonClick"/>
             </StackPanel>
         </StackPanel>
 
 
         <Slider x:Name="progressSlider" Grid.Row="2"
-            VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" IsEnabled="False"/>
+            VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" IsEnabled="False"
+            PreviewMouseDown="progressSlider_PreviewMouseDown" PreviewMouseUp="progressSlider_PreviewMouseUp"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+            <Button Content="Previous" Click="PlayPreviousButtonClick"/>
             <Button Content="Play" Click="PlayButtonClick"/>
             <Button Content="Pause" Click="PauseButtonClick"/>
             <Button Content="Stop" Click="StopButtonClick"/>
+            <Button Content="Next" Click="PlayNextButtonClick"/>
 
         </StackPanel>
 
