@@ -116,7 +116,6 @@ namespace WpfMediaPlayer
                 string nextFile = playlistListBox.Items[currentPlaylistIndex].ToString();
                 mediaPlayer.Source = new Uri(nextFile);
                 mediaPlayer.Play();
-                timer.Stop();
                 progressSlider.Value = 0;
             }
             else
@@ -132,7 +131,6 @@ namespace WpfMediaPlayer
                 {
                     currentPlaylistIndex = 0;
                 }
-                timer.Stop();
                 progressSlider.Value = 0;
             }
             

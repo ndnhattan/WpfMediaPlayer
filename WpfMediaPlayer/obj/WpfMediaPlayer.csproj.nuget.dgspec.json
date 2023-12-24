@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {}
+    "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {}
   },
   "projects": {
-    "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {
+    "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+        "projectUniqueName": "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
         "projectName": "WpfMediaPlayer",
-        "projectPath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
-        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
-        "outputPath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
+        "projectPath": "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+        "packagesPath": "C:\\Users\\ndnhattan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ndnhattan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

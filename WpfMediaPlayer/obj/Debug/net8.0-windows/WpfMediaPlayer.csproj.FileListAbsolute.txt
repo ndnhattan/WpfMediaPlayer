@@ -39,3 +39,4 @@ D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\re
 D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.pdb
 D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.genruntimeconfig.cache
 D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\ref\WpfMediaPlayer.dll
+C:\Users\ndnhattan\source\repos\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.sourcelink.json
