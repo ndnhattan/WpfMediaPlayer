@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "oh77ajYecT/xu/dxIiyPOufjSsn01QD9+7nt5CtUiq25+Kz4Wu7Q3owpysUIGkmR826BPRlZkGRPde7JskjHWA==",
+  "dgSpecHash": "tiqnuNU0NJplt8ANFP9TJIp+jk6HbCYc66R6b+VALOMdQ4r6OGsPP9jCKEJvZApD9IMwETbL4w0Bg80b+YXJXg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ndnhattan\\source\\repos\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\dapplo.log\\2.0.1\\dapplo.log.2.0.1.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\dapplo.windows.common\\1.0.28\\dapplo.windows.common.1.0.28.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\dapplo.windows.input\\1.0.28\\dapplo.windows.input.1.0.28.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\dapplo.windows.messages\\1.0.28\\dapplo.windows.messages.1.0.28.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\dapplo.windows.user32\\1.0.28\\dapplo.windows.user32.1.0.28.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\mousekeyhook\\5.7.1\\mousekeyhook.5.7.1.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\system.reactive\\5.0.0\\system.reactive.5.0.0.nupkg.sha512",
+    "C:\\Users\\ndnhattan\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

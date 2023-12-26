@@ -1,16 +1,14 @@
 ﻿using Microsoft.Win32;
 using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+using Gma.System.MouseKeyHook;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
+
 
 namespace WpfMediaPlayer
 {
@@ -20,11 +18,28 @@ namespace WpfMediaPlayer
     public partial class MainWindow : Window
     {
         private int currentPlaylistIndex = 0;
-        
         private DispatcherTimer timer;
+        
         private bool isShuffleMode = false;
         Brush currentButtonColor;
         private bool isDraggingSlider = false; // Đang kéo thanh tua
+        
+        private List<string> recentlyPlayed = new List<string>();
+        private const int MaxRecentFiles = 5;
+
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        private const int MOD_CTRL = 0x0002; // Control key
+        private const int WM_HOTKEY = 0x0312;
+
+        private HwndSource _source;
+
+        private bool isPlaying = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,24 +49,88 @@ namespace WpfMediaPlayer
             timer.Tick += Timer_Tick;
             // Lấy màu hiện tại của nút
             currentButtonColor = ShuffleBtn.Background;
+            
+
         }
 
-        
-        private void PlayButtonClick(object sender, RoutedEventArgs e)
+        protected override void OnSourceInitialized(EventArgs e)
         {
-            if (playlistListBox.Items.Count > 0)
+            base.OnSourceInitialized(e);
+            _source = PresentationSource.FromVisual(this) as HwndSource;
+            _source.AddHook(HwndHook);
+            RegisterHotKey();
+        }
+
+        private void RegisterHotKey()
+        {
+            const int PLAY_PAUSE_HOTKEY_ID = 9000;
+            const int NEXT_HOTKEY_ID = 9001;
+
+            RegisterHotKey(_source.Handle, PLAY_PAUSE_HOTKEY_ID, MOD_CTRL, (int)KeyInterop.VirtualKeyFromKey(Key.Space));
+            RegisterHotKey(_source.Handle, NEXT_HOTKEY_ID, MOD_CTRL, (int)KeyInterop.VirtualKeyFromKey(Key.N));
+        }
+
+        private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WM_HOTKEY)
+            {
+                switch (wParam.ToInt32())
+                {
+                    case 9000: 
+                        if (isPlaying)
+                            PauseMedia();
+                        else 
+                            PlayMedia();
+
+                        handled = true;
+                        break;
+                    case 9001:
+                        PlayNextFile();
+
+                        handled = true;
+                        break;
+                }
+            }
+            return IntPtr.Zero;
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            _source.RemoveHook(HwndHook);
+            _source = null;
+            UnregisterHotKey(_source.Handle, 9000); // Unregister hotkeys when closing the window
+            UnregisterHotKey(_source.Handle, 9001);
+        }
+
+
+        private void PlayMedia()
+        {
+            if (mediaPlayer.Source == null && playlistListBox.Items.Count > 0)
             {
                 string selectedFile = playlistListBox.Items[currentPlaylistIndex].ToString();
                 mediaPlayer.Source = new Uri(selectedFile);
             }
             mediaPlayer.Play();
             timer.Start();
+            isPlaying = true;
+        }
+
+        private void PlayButtonClick(object sender, RoutedEventArgs e)
+        {
+            PlayMedia();
+        }
+
+        private void PauseMedia()
+        {
+            mediaPlayer.Pause();
+            timer.Stop();
+            isPlaying = false;
         }
 
         private void PauseButtonClick(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Pause();
-            timer.Stop();
+            PauseMedia();
         }
 
         private void StopButtonClick(object sender, RoutedEventArgs e)
@@ -59,6 +138,7 @@ namespace WpfMediaPlayer
             mediaPlayer.Stop();
             timer.Stop();
             progressSlider.Value = 0;
+            isPlaying = false;
         }
 
         private void VolumeSliderChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -68,7 +148,7 @@ namespace WpfMediaPlayer
 
         private void OpenButtonClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Filter = "Media Files|*.mp3;*.mp4;*.wav;*.avi;*.mkv|All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == true)
@@ -79,7 +159,7 @@ namespace WpfMediaPlayer
 
         private void AddToPlayListButtonClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "Media Files|*.mp3;*.mp4;*.wav;*.avi;*.mkv|All files (*.*)|*.*";
 
@@ -94,6 +174,18 @@ namespace WpfMediaPlayer
 
         private void mediaPlayer_MediaEnded(object sender, RoutedEventArgs e)
         {
+            string currentFile = playlistListBox.Items[currentPlaylistIndex].ToString();
+            if (!recentlyPlayed.Contains(currentFile))
+            {
+                recentlyPlayed.Insert(0, currentFile); 
+                if (recentlyPlayed.Count > MaxRecentFiles)
+                {
+                    recentlyPlayed.RemoveAt(recentlyPlayed.Count - 1);
+                }    
+            }
+
+            UpdateRecentlyPlayedUI();
+
             if (isShuffleMode)
             {
                 // Tạo danh sách các chỉ số của bài hát trong playlist
@@ -133,7 +225,18 @@ namespace WpfMediaPlayer
                 }
                 progressSlider.Value = 0;
             }
-            
+
+            mediaPlayer.Position = TimeSpan.Zero;
+
+        }
+
+        private void UpdateRecentlyPlayedUI()
+        {
+            recentlyPlayedListBox.Items.Clear();
+            foreach(string file in recentlyPlayed)
+            {
+                recentlyPlayedListBox.Items.Add(file);  
+            }
         }
 
         private void RemoveSelectedButtonClick(object sender, RoutedEventArgs e)
@@ -154,7 +257,7 @@ namespace WpfMediaPlayer
 
         private void SavePlaylistButtonClick(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
             saveFileDialog.Filter = "Text Files|*.txt";
 
             if (saveFileDialog.ShowDialog() == true)
@@ -177,13 +280,13 @@ namespace WpfMediaPlayer
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error saving");
+                System.Windows.MessageBox.Show("Error saving");
             }
         }
 
         private void LoadPlaylistButtonClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Filter = "Text Files|*.txt";
 
             if (openFileDialog.ShowDialog() == true)
@@ -207,12 +310,12 @@ namespace WpfMediaPlayer
                 }
                 else
                 {
-                    MessageBox.Show("Playlist file not found.");
+                    System.Windows.MessageBox.Show("Playlist file not found.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading");
+                System.Windows.MessageBox.Show("Error loading");
             }
         }
 
@@ -220,6 +323,7 @@ namespace WpfMediaPlayer
         {
             progressSlider.IsEnabled = true;
             progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            mediaPlayer.Position = TimeSpan.Zero;
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -299,6 +403,11 @@ namespace WpfMediaPlayer
         {
             isDraggingSlider = false;
             mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
+        }
+
+        private void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
         }
     }
 

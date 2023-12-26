@@ -8,35 +8,34 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Open" Click="OpenButtonClick" Grid.Row="0" Width="100" HorizontalAlignment="Left"/>
-
         <MediaElement x:Name="mediaPlayer" LoadedBehavior="Manual"
                       MediaEnded="mediaPlayer_MediaEnded" MediaOpened="mediaPlayer_MediaOpened"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
             <StackPanel Width="150">
                 <Button Content="Add to playlist" Click="AddToPlayListButtonClick"/>
                 <Button Content="Remove Selected" Click="RemoveSelectedButtonClick"/>
-                <ListBox Name="playlistListBox" SelectionMode="Extended"/>
+                <ListBox Name="playlistListBox" SelectionMode="Extended" Height="130"/>
                 <Button Content="Save" Click="SavePlaylistButtonClick"/>
                 <Button Content="Load" Click="LoadPlaylistButtonClick"/>
                 <Button Name="ShuffleBtn" Content="Shuffle mode" Click="ShuffleModeButtonClick"/>
+                <ListBox x:Name="recentlyPlayedListBox" Height="130"/>
             </StackPanel>
         </StackPanel>
 
 
-        <Slider x:Name="progressSlider" Grid.Row="2"
+        <Slider x:Name="progressSlider" Grid.Row="1" ValueChanged="progressSlider_ValueChanged"
             VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" IsEnabled="False"
             PreviewMouseDown="progressSlider_PreviewMouseDown" PreviewMouseUp="progressSlider_PreviewMouseUp"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <Button Content="Previous" Click="PlayPreviousButtonClick"/>
             <Button Content="Play" Click="PlayButtonClick"/>
             <Button Content="Pause" Click="PauseButtonClick"/>
@@ -45,8 +44,10 @@
 
         </StackPanel>
 
-        <Slider x:Name="volumeSlider" Grid.Row="4" Minimum="0" Maximum="1" Value="0.5" 
+        <Slider x:Name="volumeSlider" Grid.Row="3" Minimum="0" Maximum="1" Value="0.5" 
                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="200"
                 ValueChanged="VolumeSliderChanged"/>
+
+        
     </Grid>
 </Window>

@@ -1,11 +1,338 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "Dapplo.Log/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Dapplo.Log.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapplo.Log.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Dapplo.Windows.Common/1.0.28": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "Dapplo.Windows.Input/1.0.28": {
+        "type": "package",
+        "dependencies": {
+          "Dapplo.Windows.Common": "1.0.28",
+          "Dapplo.Windows.Messages": "1.0.28",
+          "Dapplo.Windows.User32": "1.0.28",
+          "System.Reactive": "5.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Input.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Input.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "Dapplo.Windows.Messages/1.0.28": {
+        "type": "package",
+        "dependencies": {
+          "Dapplo.Log": "2.0.1",
+          "Dapplo.Windows.Common": "1.0.28",
+          "System.Reactive": "5.0.0",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Messages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.Messages.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "Dapplo.Windows.User32/1.0.28": {
+        "type": "package",
+        "dependencies": {
+          "Dapplo.Log": "2.0.1",
+          "Dapplo.Windows.Common": "1.0.28",
+          "Dapplo.Windows.Messages": "1.0.28",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.User32.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Dapplo.Windows.User32.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "MouseKeyHook/5.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows7.0/Gma.System.MouseKeyHook.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Gma.System.MouseKeyHook.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "System.Reactive/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net5.0/_._": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Dapplo.Log/2.0.1": {
+      "sha512": "y5zaFCcOvvJxm01/Tg+teOJf5x1wz8WiwR8D+SoG+zQtoxBSLHH207tIBhqM/YegtECIcMoE0D0VWgNEqoo5MQ==",
+      "type": "package",
+      "path": "dapplo.log/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapplo.log.2.0.1.nupkg.sha512",
+        "dapplo.log.nuspec",
+        "icon.png",
+        "lib/net471/Dapplo.Log.dll",
+        "lib/net471/Dapplo.Log.xml",
+        "lib/netstandard1.1/Dapplo.Log.dll",
+        "lib/netstandard1.1/Dapplo.Log.xml",
+        "lib/netstandard1.3/Dapplo.Log.dll",
+        "lib/netstandard1.3/Dapplo.Log.xml",
+        "lib/netstandard2.0/Dapplo.Log.dll",
+        "lib/netstandard2.0/Dapplo.Log.xml"
+      ]
+    },
+    "Dapplo.Windows.Common/1.0.28": {
+      "sha512": "HKIXTytsVJHx04cP1bpcNSYC9TZU0ptVTWf2fP2Tsvo9jtUKQsMR+tZ51izUat3wzOiKmbvflTJQdi7ND/3bEw==",
+      "type": "package",
+      "path": "dapplo.windows.common/1.0.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapplo.windows.common.1.0.28.nupkg.sha512",
+        "dapplo.windows.common.nuspec",
+        "icon.png",
+        "lib/net472/Dapplo.Windows.Common.dll",
+        "lib/net472/Dapplo.Windows.Common.xml",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Common.dll",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Common.xml",
+        "lib/netcoreapp3.1/Dapplo.Windows.Common.dll",
+        "lib/netcoreapp3.1/Dapplo.Windows.Common.xml",
+        "lib/netstandard2.0/Dapplo.Windows.Common.dll",
+        "lib/netstandard2.0/Dapplo.Windows.Common.xml"
+      ]
+    },
+    "Dapplo.Windows.Input/1.0.28": {
+      "sha512": "0tcUaxwnJXvE+Zk74PebJ+n2kFP7IOVTEis91r5muUCkpsRMpItR+XkbnGi06h1ZRYRtAmVxXB2DfcqxCNGbTg==",
+      "type": "package",
+      "path": "dapplo.windows.input/1.0.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapplo.windows.input.1.0.28.nupkg.sha512",
+        "dapplo.windows.input.nuspec",
+        "icon.png",
+        "lib/net472/Dapplo.Windows.Input.dll",
+        "lib/net472/Dapplo.Windows.Input.xml",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Input.dll",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Input.xml",
+        "lib/netcoreapp3.1/Dapplo.Windows.Input.dll",
+        "lib/netcoreapp3.1/Dapplo.Windows.Input.xml",
+        "lib/netstandard2.0/Dapplo.Windows.Input.dll",
+        "lib/netstandard2.0/Dapplo.Windows.Input.xml"
+      ]
+    },
+    "Dapplo.Windows.Messages/1.0.28": {
+      "sha512": "Ec1EwfopuklXWuHO57MvL6WyO0qTv6u8ZveiHVcl2wKGq0832leRuCP5yFtUr8T9dyS0ljAW6yOlojf7AmUobQ==",
+      "type": "package",
+      "path": "dapplo.windows.messages/1.0.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapplo.windows.messages.1.0.28.nupkg.sha512",
+        "dapplo.windows.messages.nuspec",
+        "icon.png",
+        "lib/net472/Dapplo.Windows.Messages.dll",
+        "lib/net472/Dapplo.Windows.Messages.xml",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Messages.dll",
+        "lib/net6.0-windows7.0/Dapplo.Windows.Messages.xml",
+        "lib/netcoreapp3.1/Dapplo.Windows.Messages.dll",
+        "lib/netcoreapp3.1/Dapplo.Windows.Messages.xml",
+        "lib/netstandard2.0/Dapplo.Windows.Messages.dll",
+        "lib/netstandard2.0/Dapplo.Windows.Messages.xml"
+      ]
+    },
+    "Dapplo.Windows.User32/1.0.28": {
+      "sha512": "ouX93p7LWBsXsNPbRoW0uDplR+he1i/h9n9GJjsOssTs+q6poiYQkUIz19S+cA6sNeMDSuWdXcLpAc9T5GI9Hg==",
+      "type": "package",
+      "path": "dapplo.windows.user32/1.0.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapplo.windows.user32.1.0.28.nupkg.sha512",
+        "dapplo.windows.user32.nuspec",
+        "icon.png",
+        "lib/net472/Dapplo.Windows.User32.dll",
+        "lib/net472/Dapplo.Windows.User32.xml",
+        "lib/net6.0-windows7.0/Dapplo.Windows.User32.dll",
+        "lib/net6.0-windows7.0/Dapplo.Windows.User32.xml",
+        "lib/netcoreapp3.1/Dapplo.Windows.User32.dll",
+        "lib/netcoreapp3.1/Dapplo.Windows.User32.xml",
+        "lib/netstandard2.0/Dapplo.Windows.User32.dll",
+        "lib/netstandard2.0/Dapplo.Windows.User32.xml"
+      ]
+    },
+    "MouseKeyHook/5.7.1": {
+      "sha512": "c0VhB6cbcOpMOcoCQmvPMVqxaH76S4IPHwpbCIY7XKUNimdj9+81rX+Evnu5O53xYgUvdD7g0qmlVeZP2wGCnA==",
+      "type": "package",
+      "path": "mousekeyhook/5.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net472/Gma.System.MouseKeyHook.dll",
+        "lib/net48/Gma.System.MouseKeyHook.dll",
+        "lib/net6.0-windows7.0/Gma.System.MouseKeyHook.dll",
+        "lib/net7.0-windows7.0/Gma.System.MouseKeyHook.dll",
+        "mouse-keyboard-hook-logo64x64.png",
+        "mousekeyhook.5.7.1.nupkg.sha512",
+        "mousekeyhook.nuspec"
+      ]
+    },
+    "System.Reactive/5.0.0": {
+      "sha512": "erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
+      "type": "package",
+      "path": "system.reactive/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net5.0/_._",
+        "build/netcoreapp3.1/System.Reactive.dll",
+        "build/netcoreapp3.1/System.Reactive.targets",
+        "build/netcoreapp3.1/System.Reactive.xml",
+        "buildTransitive/net5.0/_._",
+        "buildTransitive/netcoreapp3.1/System.Reactive.targets",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net5.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net5.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net5.0/System.Reactive.dll",
+        "lib/net5.0/System.Reactive.xml",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.16299/System.Reactive.dll",
+        "lib/uap10.0.16299/System.Reactive.pri",
+        "lib/uap10.0.16299/System.Reactive.xml",
+        "system.reactive.5.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
+    },
+    "System.ValueTuple/4.5.0": {
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "Dapplo.Windows.Input >= 1.0.28",
+      "MouseKeyHook >= 5.7.1"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\ndnhattan\\.nuget\\packages\\": {},
@@ -51,6 +378,16 @@
     "frameworks": {
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "Dapplo.Windows.Input": {
+            "target": "Package",
+            "version": "[1.0.28, )"
+          },
+          "MouseKeyHook": {
+            "target": "Package",
+            "version": "[5.7.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
