@@ -8,6 +8,9 @@ using Gma.System.MouseKeyHook;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Xml.Serialization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Configuration;
 
 
 namespace WpfMediaPlayer
@@ -39,6 +42,10 @@ namespace WpfMediaPlayer
         private HwndSource _source;
 
         private bool isPlaying = false;
+        // Lưu lại để phát tiếp lần sau
+        private string savedPlaylist;
+        private string savedVideo;
+        private string savedPosition;
 
         public MainWindow()
         {
@@ -49,8 +56,8 @@ namespace WpfMediaPlayer
             timer.Tick += Timer_Tick;
             // Lấy màu hiện tại của nút
             currentButtonColor = ShuffleBtn.Background;
-            
-
+            // Load cấu hình khi khởi động
+            LoadConfiguration();
         }
 
         protected override void OnSourceInitialized(EventArgs e)
@@ -99,8 +106,18 @@ namespace WpfMediaPlayer
             base.OnClosed(e);
             _source.RemoveHook(HwndHook);
             _source = null;
-            UnregisterHotKey(_source.Handle, 9000); // Unregister hotkeys when closing the window
-            UnregisterHotKey(_source.Handle, 9001);
+
+            try
+            {
+                savedVideo = currentPlaylistIndex.ToString();
+                savedPosition = progressSlider.Value.ToString();
+                SaveConfiguration();
+            } catch (Exception ex) {
+                
+            }
+
+            //UnregisterHotKey(_source.Handle, 9000); // Unregister hotkeys when closing the window
+            //UnregisterHotKey(_source.Handle, 9001);
         }
 
 
@@ -291,6 +308,7 @@ namespace WpfMediaPlayer
 
             if (openFileDialog.ShowDialog() == true)
             {
+                savedPlaylist = openFileDialog.FileName;
                 playlistListBox.Items.Clear();
                 LoadPlaylistButtonClick(openFileDialog.FileName);
             }
@@ -310,7 +328,7 @@ namespace WpfMediaPlayer
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Playlist file not found.");
+                    //System.Windows.MessageBox.Show("Playlist file not found.");
                 }
             }
             catch (Exception ex)
@@ -323,7 +341,7 @@ namespace WpfMediaPlayer
         {
             progressSlider.IsEnabled = true;
             progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-            mediaPlayer.Position = TimeSpan.Zero;
+            //mediaPlayer.Position = TimeSpan.Zero;
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -347,8 +365,20 @@ namespace WpfMediaPlayer
             string nextFile = playlistListBox.Items[currentPlaylistIndex].ToString();
             mediaPlayer.Source = new Uri(nextFile);
             mediaPlayer.Play();
+
+            // Kiểm tra xem NaturalDuration có giá trị hợp lệ không
+            if (mediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            }
+            else
+            {
+                progressSlider.Maximum = 0;
+            }
+
             timer.Stop();
             progressSlider.Value = 0;
+            timer.Start();
         }
 
         private void PlayPreviousFile()
@@ -397,18 +427,68 @@ namespace WpfMediaPlayer
         private void progressSlider_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             isDraggingSlider = true;
+            mediaPlayer.Pause();
         }
 
-        private void progressSlider_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private async void progressSlider_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             isDraggingSlider = false;
             mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
+            await Task.Delay(50);
+            mediaPlayer.Play();
         }
 
-        private void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private async void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            
+            if (isDraggingSlider)
+            {
+                mediaPlayer.Play();
+                mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
+                await Task.Delay(50);
+                mediaPlayer.Pause();
+            }
+        }
+
+        private void SaveConfiguration()
+        {
+            try
+            {
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["savedPlaylist"].Value = savedPlaylist;
+                config.AppSettings.Settings["savedVideo"].Value = savedVideo;
+                config.AppSettings.Settings["savedPosition"].Value = savedPosition;
+                config.Save(ConfigurationSaveMode.Minimal);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+            catch (Exception ex)
+            {
+               
+            }
+        }
+
+        private async void LoadConfiguration()
+        {
+            try
+            {
+                savedPlaylist = ConfigurationManager.AppSettings["savedPlaylist"];
+                savedVideo = ConfigurationManager.AppSettings["savedVideo"];
+                savedPosition = ConfigurationManager.AppSettings["savedPosition"];
+                int savedVideoIntValue = int.Parse(savedVideo);
+                double savedPositionDoubleValue = Convert.ToDouble(savedPosition);
+
+                // Thực hiện các bước để khôi phục thông tin vào ứng dụng
+                LoadPlaylistButtonClick(savedPlaylist);
+                currentPlaylistIndex = savedVideoIntValue;
+                PlayMedia();
+                progressSlider.Value = savedPositionDoubleValue;
+                mediaPlayer.Position = TimeSpan.FromSeconds(savedPositionDoubleValue);
+                mediaPlayer.Play();
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
-
 }

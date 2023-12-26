@@ -49,3 +49,13 @@ C:\Users\ndnhattan\source\repos\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-w
 C:\Users\ndnhattan\source\repos\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.csproj.AssemblyReference.cache
 C:\Users\ndnhattan\source\repos\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.csproj.CopyComplete
 C:\Users\ndnhattan\source\repos\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Gma.System.MouseKeyHook.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Dapplo.Log.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Dapplo.Windows.Common.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Dapplo.Windows.Input.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Dapplo.Windows.Messages.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Dapplo.Windows.User32.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\Gma.System.MouseKeyHook.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\System.Reactive.dll
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.csproj.AssemblyReference.cache
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.csproj.CopyComplete
+D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\WpfMediaPlayer.dll.config
