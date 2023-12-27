@@ -445,13 +445,17 @@ namespace WpfMediaPlayer
         {
             isDraggingSlider = false;
             mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
-            await Task.Delay(50);
-            mediaPlayer.Play();
+
+            if (isPlaying)
+            {
+                await Task.Delay(50);
+                mediaPlayer.Play();
+            }
         }
 
         private async void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (isDraggingSlider)
+            if (isDraggingSlider && isPlaying)
             {
                 mediaPlayer.Play();
                 mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
