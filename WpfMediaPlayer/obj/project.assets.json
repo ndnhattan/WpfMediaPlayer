@@ -340,11 +340,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+      "projectUniqueName": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
       "projectName": "WpfMediaPlayer",
-      "projectPath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+      "projectPath": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
       "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
-      "outputPath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
+      "outputPath": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",

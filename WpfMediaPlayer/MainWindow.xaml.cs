@@ -391,8 +391,19 @@ namespace WpfMediaPlayer
             string previousFile = playlistListBox.Items[currentPlaylistIndex].ToString();
             mediaPlayer.Source = new Uri(previousFile);
             mediaPlayer.Play();
+            // Kiểm tra xem NaturalDuration có giá trị hợp lệ không
+            if (mediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            }
+            else
+            {
+                progressSlider.Maximum = 0;
+            }
+
             timer.Stop();
             progressSlider.Value = 0;
+            timer.Start();
         }
 
         private void PlayNextButtonClick(object sender, RoutedEventArgs e)
@@ -473,21 +484,25 @@ namespace WpfMediaPlayer
                 savedPlaylist = ConfigurationManager.AppSettings["savedPlaylist"];
                 savedVideo = ConfigurationManager.AppSettings["savedVideo"];
                 savedPosition = ConfigurationManager.AppSettings["savedPosition"];
-                int savedVideoIntValue = int.Parse(savedVideo);
-                double savedPositionDoubleValue = Convert.ToDouble(savedPosition);
+                if (savedPlaylist != null && savedVideo != null && savedPosition != null
+                    && savedPlaylist.Length > 0 && savedPosition.Length > 0 && savedVideo.Length > 0)
+                {
+                    int savedVideoIntValue = int.Parse(savedVideo);
+                    double savedPositionDoubleValue = Convert.ToDouble(savedPosition);
 
-                // Thực hiện các bước để khôi phục thông tin vào ứng dụng
-                LoadPlaylistButtonClick(savedPlaylist);
-                currentPlaylistIndex = savedVideoIntValue;
-                PlayMedia();
-                progressSlider.Value = savedPositionDoubleValue;
-                mediaPlayer.Position = TimeSpan.FromSeconds(savedPositionDoubleValue);
-                mediaPlayer.Play();
+                    // Thực hiện các bước để khôi phục thông tin vào ứng dụng
+                    LoadPlaylistButtonClick(savedPlaylist);
+                    currentPlaylistIndex = savedVideoIntValue;
+                    PlayMedia();
+                    progressSlider.Value = savedPositionDoubleValue;
+                    mediaPlayer.Position = TimeSpan.FromSeconds(savedPositionDoubleValue);
+                    mediaPlayer.Play();
+                }
 
             }
             catch (Exception ex)
             {
-                
+                //System.Windows.MessageBox.Show(ex.Message);
             }
         }
     }

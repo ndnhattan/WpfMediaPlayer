@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Od+RlSNO2dZqyHdlVMZfPUUk9etOZD1Cg1/JBwW022OFIOsj3PbFlRL3ppQ1kuvleHRSbFFaJxGCJZNYpinSaw==",
+  "dgSpecHash": "LRJ/caKANz4hvPkl8IjAuNE/V4LVGUVlkADv5v7cxzpuVCIEpQfRuI9kKGAhcLeLF8PYHTx1MBFNEDpSGG0Wfg==",
   "success": true,
-  "projectFilePath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+  "projectFilePath": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LG\\.nuget\\packages\\dapplo.log\\2.0.1\\dapplo.log.2.0.1.nupkg.sha512",
     "C:\\Users\\LG\\.nuget\\packages\\dapplo.windows.common\\1.0.28\\dapplo.windows.common.1.0.28.nupkg.sha512",
