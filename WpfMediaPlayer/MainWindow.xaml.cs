@@ -506,7 +506,14 @@ namespace WpfMediaPlayer
             }
             catch (Exception ex)
             {
-                //System.Windows.MessageBox.Show(ex.Message);
+                //System.Windows.MessageBox.Show("a");
+                currentPlaylistIndex = 0;
+                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                //config.AppSettings.Settings["savedPlaylist"].Value = "";
+                //config.AppSettings.Settings["savedVideo"].Value = "";
+                //config.AppSettings.Settings["savedPosition"].Value = "";
+                //config.Save(ConfigurationSaveMode.Minimal);
+                //ConfigurationManager.RefreshSection("appSettings");
             }
         }
     }
