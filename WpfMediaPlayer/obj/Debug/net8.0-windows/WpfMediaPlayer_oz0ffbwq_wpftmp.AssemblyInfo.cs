@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WpfMediaPlayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+023d61f7e879d0df416de5043238daa02187f80b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f841dfe92c12a87b5da307573c5bd25c8a94e95")]
 [assembly: System.Reflection.AssemblyProductAttribute("WpfMediaPlayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WpfMediaPlayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

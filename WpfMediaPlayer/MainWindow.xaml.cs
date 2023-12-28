@@ -445,13 +445,17 @@ namespace WpfMediaPlayer
         {
             isDraggingSlider = false;
             mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
-            await Task.Delay(50);
-            mediaPlayer.Play();
+
+            if (isPlaying)
+            {
+                await Task.Delay(50);
+                mediaPlayer.Play();
+            }
         }
 
         private async void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (isDraggingSlider)
+            if (isDraggingSlider && isPlaying)
             {
                 mediaPlayer.Play();
                 mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
@@ -502,7 +506,14 @@ namespace WpfMediaPlayer
             }
             catch (Exception ex)
             {
-                //System.Windows.MessageBox.Show(ex.Message);
+                //System.Windows.MessageBox.Show("a");
+                currentPlaylistIndex = 0;
+                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                //config.AppSettings.Settings["savedPlaylist"].Value = "";
+                //config.AppSettings.Settings["savedVideo"].Value = "";
+                //config.AppSettings.Settings["savedPosition"].Value = "";
+                //config.Save(ConfigurationSaveMode.Minimal);
+                //ConfigurationManager.RefreshSection("appSettings");
             }
         }
     }
