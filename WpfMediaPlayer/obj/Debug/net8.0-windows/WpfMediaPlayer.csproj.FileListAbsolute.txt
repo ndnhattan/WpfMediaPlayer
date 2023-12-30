@@ -124,3 +124,6 @@ D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0
 D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\MahApps.Metro.IconPacks.Core.dll
 D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\MahApps.Metro.IconPacks.Material.dll
 D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\App.baml
+D:\tailieu\c#\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\MahApps.Metro.IconPacks.Core.dll
+D:\tailieu\c#\WpfMediaPlayer\WpfMediaPlayer\bin\Debug\net8.0-windows\MahApps.Metro.IconPacks.Material.dll
+D:\tailieu\c#\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\App.baml

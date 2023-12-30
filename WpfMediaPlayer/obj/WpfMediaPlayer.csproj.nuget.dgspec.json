@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {}
+    "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {}
   },
   "projects": {
-    "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {
+    "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+        "projectUniqueName": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
         "projectName": "WpfMediaPlayer",
-        "projectPath": "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
+        "projectPath": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "D:\\tailieu\\c#\\WpfMediaPlayer\\WpfMediaPlayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
