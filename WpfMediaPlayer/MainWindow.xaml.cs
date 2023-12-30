@@ -497,23 +497,21 @@ namespace WpfMediaPlayer
                     // Thực hiện các bước để khôi phục thông tin vào ứng dụng
                     LoadPlaylistButtonClick(savedPlaylist);
                     currentPlaylistIndex = savedVideoIntValue;
+                    if (currentPlaylistIndex >= playlistListBox.Items.Count)
+                    {
+                        currentPlaylistIndex = 0;
+                    }
                     PlayMedia();
                     progressSlider.Value = savedPositionDoubleValue;
                     mediaPlayer.Position = TimeSpan.FromSeconds(savedPositionDoubleValue);
                     mediaPlayer.Play();
                 }
-
             }
             catch (Exception ex)
             {
                 //System.Windows.MessageBox.Show("a");
                 currentPlaylistIndex = 0;
-                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                //config.AppSettings.Settings["savedPlaylist"].Value = "";
-                //config.AppSettings.Settings["savedVideo"].Value = "";
-                //config.AppSettings.Settings["savedPosition"].Value = "";
-                //config.Save(ConfigurationSaveMode.Minimal);
-                //ConfigurationManager.RefreshSection("appSettings");
+                playlistListBox.Items.Clear();
             }
         }
     }
