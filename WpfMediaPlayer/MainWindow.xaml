@@ -1,11 +1,13 @@
 ﻿<Window x:Class="WpfMediaPlayer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMediaPlayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -14,40 +16,72 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <MediaElement x:Name="mediaPlayer" LoadedBehavior="Manual"
                       MediaEnded="mediaPlayer_MediaEnded" MediaOpened="mediaPlayer_MediaOpened"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <StackPanel Width="150">
-                <Button Content="Add to playlist" Click="AddToPlayListButtonClick"/>
-                <Button Content="Remove Selected" Click="RemoveSelectedButtonClick"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Width="210" HorizontalAlignment="Left">
+            <StackPanel Margin="0 15 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                    <Ellipse Fill="Black" Width="10" Height="10" Margin="0 0 3 0"/>
+                    <Ellipse Fill="DarkGray" Width="10" Height="10" Margin="0 0 3 0"/>
+                    <Ellipse Fill="#DDDDDD" Width="10" Height="10"/>
+                </StackPanel>
+                
+                <Button Style="{StaticResource menuButton}" Click="AddToPlayListButtonClick" Background="#EEEEEE" Foreground="Black" >
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Add to Playlist" FontSize="15" FontWeight="SemiBold" Margin="0 0 5 2"    />
+                        <Icon:PackIconMaterial Kind="OpenInApp" VerticalAlignment="Center" />
+                    </StackPanel> 
+                </Button>
+                <Button  Click="RemoveSelectedButtonClick" Style="{StaticResource menuButton}" Background="#EEEEEE" Foreground="Black">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Remove Selected" FontSize="15" FontWeight="SemiBold" Margin="0 0 5 2"/>
+                        <Icon:PackIconMaterial Kind="TrashCan" VerticalAlignment="Center" Margin="0 0 10 0" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Button>
                 <ListBox Name="playlistListBox" SelectionMode="Extended" Height="130"/>
-                <Button Content="Save" Click="SavePlaylistButtonClick"/>
-                <Button Content="Load" Click="LoadPlaylistButtonClick"/>
-                <Button Name="ShuffleBtn" Content="Shuffle mode" Click="ShuffleModeButtonClick"/>
+                <Button Style="{StaticResource menuButton}" Click="SavePlaylistButtonClick" Background="#EEEEEE" Foreground="Black">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Save" FontSize="15" FontWeight="SemiBold" Margin="30 0 5 2" />
+                        <Icon:PackIconMaterial Kind="ContentSave" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}" Click="LoadPlaylistButtonClick" Background="#EEEEEE" Foreground="Black">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Load" FontSize="15" FontWeight="SemiBold" Margin="30 0 5 2"    />
+                        <Icon:PackIconMaterial Kind="Reload" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Button>
                 <ListBox x:Name="recentlyPlayedListBox" Height="130"/>
             </StackPanel>
         </StackPanel>
-
-
-        <Slider x:Name="progressSlider" Grid.Row="1" ValueChanged="progressSlider_ValueChanged"
-            VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" IsEnabled="False"
-            PreviewMouseDown="progressSlider_PreviewMouseDown" PreviewMouseUp="progressSlider_PreviewMouseUp"/>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <Button Content="Previous" Click="PlayPreviousButtonClick"/>
-            <Button Content="Play" Click="PlayButtonClick"/>
-            <Button Content="Pause" Click="PauseButtonClick"/>
-            <Button Content="Stop" Click="StopButtonClick"/>
-            <Button Content="Next" Click="PlayNextButtonClick"/>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" Margin="0 0 15 0">
+            <Button  Name="ShuffleBtn" Margin="0 0 30 0" Background="Transparent" Click="ShuffleModeButtonClick"  >
+                <Icon:PackIconMaterial RenderOptions.BitmapScalingMode="HighQuality" Kind="Shuffle" />
+            </Button>
+            <Button Click="PlayPreviousButtonClick" Background="Transparent" Margin="0 0 10 0">
+                <Icon:PackIconMaterial RenderOptions.BitmapScalingMode="HighQuality" Kind="SkipBackward"  />
+            </Button>
+            <Button Click="PauseButtonClick" Background="Transparent" Margin="0 0 10 0">
+                <Icon:PackIconMaterial RenderOptions.BitmapScalingMode="HighQuality" Kind="Pause" />
+            </Button>
+            <!--<Button Content="Stop" Click="StopButtonClick"/>-->
+            <Button  Click="PlayNextButtonClick" Background="Transparent">
+                <Icon:PackIconMaterial RenderOptions.BitmapScalingMode="HighQuality" Kind="SkipForward"/>
+            </Button>
+            <Slider Style="{DynamicResource SliderStyle1}" x:Name="progressSlider" Grid.Row="1" ValueChanged="progressSlider_ValueChanged"
+         VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" IsEnabled="False" Value="5"
+         PreviewMouseDown="progressSlider_PreviewMouseDown" PreviewMouseUp="progressSlider_PreviewMouseUp"/>    
         </StackPanel>
-
-        <Slider x:Name="volumeSlider" Grid.Row="3" Minimum="0" Maximum="1" Value="0.5" 
-                VerticalAlignment="Center" HorizontalAlignment="Center" Width="200"
-                ValueChanged="VolumeSliderChanged"/>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="0 10 0 10">
+            <Icon:PackIconMaterial Kind="VolumeHigh" VerticalAlignment="Bottom" Height="25" Width="25"  RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 7 0"/>
+            <Slider Style="{DynamicResource SliderStyle1}" x:Name="volumeSlider"  Minimum="0" Maximum="1" Value="0.5" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center" Width="200"
+                    ValueChanged="VolumeSliderChanged"/>
+        </StackPanel>
         
+
+
+
     </Grid>
 </Window>

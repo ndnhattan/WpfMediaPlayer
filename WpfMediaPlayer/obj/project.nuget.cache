@@ -1,17 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "Od+RlSNO2dZqyHdlVMZfPUUk9etOZD1Cg1/JBwW022OFIOsj3PbFlRL3ppQ1kuvleHRSbFFaJxGCJZNYpinSaw==",
+  "dgSpecHash": "CmUFF3fu9bbQDnIfahKoXpl1ftVc1mQ+MR2BxWTzno1zc5M1Gv2dKmR0UsdxoyI4X6i3Xno6VnOM/rrleL4vLA==",
   "success": true,
-  "projectFilePath": "D:\\tailieu\\c#\\project3\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
+  "projectFilePath": "D:\\NAM3\\WINDOW\\MediaPlayerProject\\WpfMediaPlayer\\WpfMediaPlayer\\WpfMediaPlayer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\LG\\.nuget\\packages\\dapplo.log\\2.0.1\\dapplo.log.2.0.1.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\dapplo.windows.common\\1.0.28\\dapplo.windows.common.1.0.28.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\dapplo.windows.input\\1.0.28\\dapplo.windows.input.1.0.28.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\dapplo.windows.messages\\1.0.28\\dapplo.windows.messages.1.0.28.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\dapplo.windows.user32\\1.0.28\\dapplo.windows.user32.1.0.28.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\mousekeyhook\\5.7.1\\mousekeyhook.5.7.1.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\system.reactive\\5.0.0\\system.reactive.5.0.0.nupkg.sha512",
-    "C:\\Users\\LG\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\ADMIN\\.nuget\\packages\\dapplo.log\\2.0.1\\dapplo.log.2.0.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\dapplo.windows.common\\1.0.28\\dapplo.windows.common.1.0.28.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\dapplo.windows.input\\1.0.28\\dapplo.windows.input.1.0.28.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\dapplo.windows.messages\\1.0.28\\dapplo.windows.messages.1.0.28.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\dapplo.windows.user32\\1.0.28\\dapplo.windows.user32.1.0.28.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\mahapps.metro.iconpacks.material\\4.11.0\\mahapps.metro.iconpacks.material.4.11.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\mousekeyhook\\5.7.1\\mousekeyhook.5.7.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\system.reactive\\5.0.0\\system.reactive.5.0.0.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

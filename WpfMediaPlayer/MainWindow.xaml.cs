@@ -133,11 +133,7 @@ namespace WpfMediaPlayer
             isPlaying = true;
         }
 
-        private void PlayButtonClick(object sender, RoutedEventArgs e)
-        {
-            PlayMedia();
-        }
-
+        bool isPause = true;
         private void PauseMedia()
         {
             mediaPlayer.Pause();
@@ -147,16 +143,26 @@ namespace WpfMediaPlayer
 
         private void PauseButtonClick(object sender, RoutedEventArgs e)
         {
-            PauseMedia();
+            if (isPause)
+            {
+                PlayMedia();
+                isPause = false;
+            }
+            else
+            {
+                PauseMedia();
+                isPause = false;
+            }
+            
         }
 
-        private void StopButtonClick(object sender, RoutedEventArgs e)
+        /*private void StopButtonClick(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Stop();
             timer.Stop();
             progressSlider.Value = 0;
             isPlaying = false;
-        }
+        }*/
 
         private void VolumeSliderChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {

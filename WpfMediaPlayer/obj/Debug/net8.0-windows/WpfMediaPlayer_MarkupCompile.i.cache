@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\
+D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\
 WpfMediaPlayer
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\tailieu\c#\project3\WpfMediaPlayer\WpfMediaPlayer\App.xaml
+D:\NAM3\WINDOW\MediaPlayerProject\WpfMediaPlayer\WpfMediaPlayer\App.xaml
 11407045341
 
 6-64627750
-214-1316227074
+216-28571154
 MainWindow.xaml;
 
-False
+True
 
