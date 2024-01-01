@@ -11,13 +11,12 @@
             <Setter Property="Foreground" Value="#cfcfcf"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="10 3 0 3"/>
-            <Setter Property="FontSize" Value="15"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Tag" Value="Collapsed"/>
             <Setter Property="Template">
                  <Setter.Value>
                      <ControlTemplate TargetType="Button">
-                         <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                         <Border Background="{TemplateBinding Background}" CornerRadius="20">
                              <ContentPresenter  VerticalAlignment="Center" Margin="35 0 0 0"/>
                          </Border>
                      </ControlTemplate>
@@ -34,7 +33,6 @@
         </Style>
         <Style x:Key="menuButtonIcon" TargetType="Icon:PackIconMaterial">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Kind" Value="ChevronRight"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Visibility" Value="{Binding Path=Tag,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Button}}}"/>
         </Style>
@@ -65,7 +63,7 @@
         <SolidColorBrush x:Key="SliderThumb.Track.Border" Color="#FFD6D6D6"/>
         <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
             <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-                <Ellipse x:Name="grip" Width="30" Height="30" StrokeThickness="10" Fill="#ffffff">
+                <Ellipse x:Name="grip" Width="25" Height="25" StrokeThickness="10" Fill="#ffffff">
                     <Ellipse.Stroke>
                         <SolidColorBrush Color="Black" Opacity="0.5"/>
                     </Ellipse.Stroke>

@@ -11,6 +11,7 @@ using System.Windows.Interop;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Configuration;
+using MahApps.Metro.IconPacks;
 
 
 namespace WpfMediaPlayer
@@ -426,18 +427,18 @@ namespace WpfMediaPlayer
         {
             isShuffleMode = !isShuffleMode;
             // thay đổi màu của button khi bật hoặc tắt shuffle mode
-            UpdateShuffleButtonColor();
+            UpdateShuffleButtonIcon();
         }
 
-        private void UpdateShuffleButtonColor()
+        private void UpdateShuffleButtonIcon()
         {
             if (isShuffleMode)
             {
-                ShuffleBtn.Background = Brushes.Green; 
+                btnShuffleIcon.Kind = PackIconMaterialKind.ShuffleVariant;
             }
             else
             {
-                ShuffleBtn.Background = currentButtonColor; 
+                btnShuffleIcon.Kind = PackIconMaterialKind.Shuffle; 
             }
         }
 
