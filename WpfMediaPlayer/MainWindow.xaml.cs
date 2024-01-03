@@ -527,7 +527,14 @@ namespace WpfMediaPlayer
 
         private void playlistListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (playlistListBox.SelectedItem == null) { return; }
+            string chooseItem = playlistListBox.SelectedItem.ToString();
+            mediaPlayer.Source = new Uri(chooseItem);
+            mediaPlayer.Play();
 
+            timer.Stop();
+            progressSlider.Value = 0;
+            timer.Start();
         }
     }
 }

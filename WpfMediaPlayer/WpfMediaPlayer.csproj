@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>play-button.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="play-button.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapplo.Windows.Input" Version="1.0.28" />

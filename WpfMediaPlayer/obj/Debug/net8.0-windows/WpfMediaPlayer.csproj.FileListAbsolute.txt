@@ -161,3 +161,4 @@ D:\NAM3\WINDOW\TestMedia\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\
 D:\NAM3\WINDOW\TestMedia\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.pdb
 D:\NAM3\WINDOW\TestMedia\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer.genruntimeconfig.cache
 D:\NAM3\WINDOW\TestMedia\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\ref\WpfMediaPlayer.dll
+D:\NAM3\WINDOW\TestMedia\WpfMediaPlayer\WpfMediaPlayer\obj\Debug\net8.0-windows\WpfMediaPlayer_Content.g.cs

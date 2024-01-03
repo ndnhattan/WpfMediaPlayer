@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WpfMediaPlayer"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="550" Width="1000">
+        Title="Media Player" Height="550" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
