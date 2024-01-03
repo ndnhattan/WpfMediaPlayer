@@ -277,8 +277,28 @@ namespace WpfMediaPlayer
                 foreach (var itemToRemove in itemsToRemove)
                 {
                     playlistListBox.Items.Remove(itemToRemove);
+
+                    string mediaPath = mediaPlayer.Source?.AbsolutePath;
+
+                    if (!string.IsNullOrEmpty(mediaPath))
+                    {
+                        string standardizedMediaPath = NormalizePath(mediaPath);
+                        string standardizedItemToRemove = NormalizePath(itemToRemove);
+
+                        if (standardizedMediaPath.Equals(standardizedItemToRemove, StringComparison.OrdinalIgnoreCase))
+                        {
+                            mediaPlayer.Stop();
+                            timer.Stop();
+                            isPlaying = false;
+                        }
+                    }
                 }
             }
+        }
+        private string NormalizePath(string path)
+        {
+            string fullPath = Path.GetFullPath(Uri.UnescapeDataString(path));
+            return fullPath.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
 
         private void SavePlaylistButtonClick(object sender, RoutedEventArgs e)
