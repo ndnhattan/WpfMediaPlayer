@@ -147,12 +147,14 @@ namespace WpfMediaPlayer
             if (isPause)
             {
                 PlayMedia();
+                btnPauseIcon.Kind = PackIconMaterialKind.Pause;
                 isPause = false;
             }
             else
             {
                 PauseMedia();
-                isPause = false;
+                btnPauseIcon.Kind = PackIconMaterialKind.Play;
+                isPause = true;
             }
             
         }
@@ -438,7 +440,7 @@ namespace WpfMediaPlayer
             }
             else
             {
-                btnShuffleIcon.Kind = PackIconMaterialKind.Shuffle; 
+                btnShuffleIcon.Kind = PackIconMaterialKind.ShuffleDisabled; 
             }
         }
 
@@ -521,6 +523,11 @@ namespace WpfMediaPlayer
                 currentPlaylistIndex = 0;
                 playlistListBox.Items.Clear();
             }
+        }
+
+        private void playlistListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
